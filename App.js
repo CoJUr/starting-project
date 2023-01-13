@@ -1,36 +1,26 @@
-import { StyleSheet, Text, View, Button } from 'react-native';
+
+import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+// import {TextInput} from "react-native-web";
 
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <view>
-        <Text style={styles.dummyText}>Open up App.js to start working on your app!</Text>
-      </view>
-      <Text
-          style={styles.dummyText}
-      >
-        Hello World
-      </Text>
-      <Button title="Tap me" />
-
+    <View style={styles.appContainer}>
+        <view>
+            <TextInput placeholder='Your course goal!' />
+            <Button title='Add goal' />
+        </view>
+        <view>
+            <Text>List of goals ... </Text>
+        </view>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-    dummyText: {
-      margin: 16,
-        borderWidth: 2,
-        borderColor: 'blue',
-        padding: 16
-    }
+  appContainer: {
+    padding: 50
+  }
 });
 
 
