@@ -4,8 +4,10 @@ import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 
 export default function App() {
 
-    function goalInputHandler() {
-        console.log('goalInputHandler');
+    function goalInputHandler(enteredText) {
+        // getting the entered text automatically from TextInput component
+        // console.log(enteredText); // each keystroke is being logged, only want to log when button is pressed
+
     }
 
     function addGoalHandler() {
@@ -22,7 +24,7 @@ export default function App() {
                 // executing goalInputHandler function! (no ()) just points
                 // to it so that it can be executed when text changes
             />
-            <Button title='Add goal' />
+            <Button title='Add goal' onPress={addGoalHandler} />
         </view>
         <view style={styles.goalsContainer}>
             <Text>List of goals ... </Text>
