@@ -7,14 +7,13 @@ export default function App() {
 
     function goalInputHandler(enteredText) {
         // getting the entered text automatically from TextInput component
-        // console.log(enteredText); // each keystroke is being logged, only want to log when button is pressed
-
+        setEnteredGoalText(enteredText);
     }
 
     function addGoalHandler() {
         // console.log('addGoalHandler');
         // to do- use stored state to add goal to list of goals
-
+        console.log(enteredGoalText)
     }
 
   return (
