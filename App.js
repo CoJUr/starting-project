@@ -1,8 +1,9 @@
-
+import {useState } from 'react';
 import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 
 
 export default function App() {
+    const [enteredGoalText, setEnteredGoalText] = useState('');
 
     function goalInputHandler(enteredText) {
         // getting the entered text automatically from TextInput component
@@ -11,7 +12,9 @@ export default function App() {
     }
 
     function addGoalHandler() {
-        console.log('addGoalHandler');
+        // console.log('addGoalHandler');
+        // to do- use stored state to add goal to list of goals
+
     }
 
   return (
