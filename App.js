@@ -1,13 +1,27 @@
 
 import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
-// import {TextInput} from "react-native-web";
 
 
 export default function App() {
+
+    function goalInputHandler() {
+        console.log('goalInputHandler');
+    }
+
+    function addGoalHandler() {
+        console.log('addGoalHandler');
+    }
+
   return (
     <View style={styles.appContainer}>
         <view style={styles.inputContainer}>
-            <TextInput style={styles.textInput} placeholder='Your course goal!' />
+            <TextInput
+                style={styles.textInput}
+                placeholder='Your course goal!'
+                onChangeText={goalInputHandler} // onChangeText is not
+                // executing goalInputHandler function! (no ()) just points
+                // to it so that it can be executed when text changes
+            />
             <Button title='Add goal' />
         </view>
         <view style={styles.goalsContainer}>
