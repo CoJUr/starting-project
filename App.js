@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 
 export default function App() {
     const [enteredGoalText, setEnteredGoalText] = useState('');
+    const [courseGoals, setCourseGoals] = useState([]);
 
     function goalInputHandler(enteredText) {
         // getting the entered text automatically from TextInput component
@@ -13,7 +14,20 @@ export default function App() {
     function addGoalHandler() {
         // console.log('addGoalHandler');
         // to do- use stored state to add goal to list of goals
-        console.log(enteredGoalText)
+
+        // setCourseGoals([...courseGoals, enteredGoalText]); // not ideal -
+        // bc the new state depends on previous state
+
+
+            setCourseGoals(currentGoals => [
+                ...currentGoals,
+                enteredGoalText
+            ]);
+        //react auto-provides the value for currentGoals param upon call.
+        // best practice way to update state that depends on previous state
+
+        //now want to output the list of goals. can map the array of goals
+        // to a list of jsx elements and return it in the view component
     }
 
   return (
@@ -29,7 +43,9 @@ export default function App() {
             <Button title='Add goal' onPress={addGoalHandler} />
         </view>
         <view style={styles.goalsContainer}>
-            <Text>List of goals ... </Text>
+            {/*<Text>List of goals ... </Text>*/}
+            {courseGoals.map((goal) => <Text key={goal}>{goal}</Text>)}
+        {/* returning the jsx element to be rendered for each goal el */}
         </view>
     </View>
   );
