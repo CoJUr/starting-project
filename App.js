@@ -44,8 +44,12 @@ export default function App() {
         </view>
         <view style={styles.goalsContainer}>
             {/*<Text>List of goals ... </Text>*/}
-            {courseGoals.map((goal) => <Text style={styles.goalItem} key={goal}>{goal}</Text>)}
-        {/* returning the jsx element to be rendered for each goal el */}
+            {courseGoals.map((goal) => (
+                <View>
+
+                <Text style={styles.goalItem} key={goal}>{goal}</Text>
+                </View>
+            ))}
         </view>
     </View>
   );
