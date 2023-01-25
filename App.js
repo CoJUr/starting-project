@@ -1,5 +1,5 @@
 import {useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, ScrollView } from 'react-native';
 
 
 export default function App() {
@@ -13,7 +13,7 @@ export default function App() {
 
     function addGoalHandler() {
         // console.log('addGoalHandler');
-        // to do- use stored state to add goal to list of goals
+        // to do:use stored state to add goal to list of goals
 
         // setCourseGoals([...courseGoals, enteredGoalText]); // not ideal -
         // bc the new state depends on previous state
@@ -32,7 +32,7 @@ export default function App() {
 
   return (
     <View style={styles.appContainer}>
-        <view style={styles.inputContainer}>
+        <View style={styles.inputContainer}>
             <TextInput
                 style={styles.textInput}
                 placeholder='Your course goal!'
@@ -41,15 +41,18 @@ export default function App() {
                 // to it so that it can be executed when text changes
             />
             <Button title='Add goal' onPress={addGoalHandler} />
-        </view>
-        <view style={styles.goalsContainer}>
+        </View>
+        <View style={styles.goalsContainer}>
+
+        <ScrollView >
             {/*<Text>List of goals ... </Text>*/}
             {courseGoals.map((goal) => (
                 <View key={goal} style={styles.goalItem}>
                     <Text style={styles.goalText}>{goal}</Text>
                 </View>
             ))}
-        </view>
+        </ScrollView>
+        </View>
     </View>
   );
 }
@@ -94,4 +97,4 @@ const styles = StyleSheet.create({
 
 
 
-// reactnative.dev/docs/components-and-apis   view text button image textinput
+// reactnative.dev/docs/components-and-apis   view text button image Textinput
