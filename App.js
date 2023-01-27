@@ -1,5 +1,13 @@
-import {useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput, ScrollView, FlatList } from 'react-native';
+import {useState} from 'react';
+import {
+    StyleSheet,
+    Text,
+    View,
+    Button,
+    TextInput,
+    ScrollView,
+    FlatList
+} from 'react-native';
 
 
 export default function App() {
@@ -19,10 +27,10 @@ export default function App() {
         // bc the new state depends on previous state
 
 
-            setCourseGoals(currentGoals => [
-                ...currentGoals,
-                enteredGoalText
-            ]);
+        setCourseGoals(currentGoals => [
+            ...currentGoals,
+            enteredGoalText
+        ]);
         //react auto-provides the value for currentGoals param upon call.
         // best practice way to update state that depends on previous state
 
@@ -30,58 +38,59 @@ export default function App() {
         // to a list of jsx elements and return it in the view component
     }
 
-  return (
-    <View style={styles.appContainer}>
-        <View style={styles.inputContainer}>
-            <TextInput
-                style={styles.textInput}
-                placeholder='Your course goal!'
-                onChangeText={goalInputHandler} // onChangeText is not
-                // executing goalInputHandler function! (no ()) just points
-                // to it so that it can be executed when text changes
-            />
-            <Button title='Add goal' onPress={addGoalHandler} />
+    return (
+        <View style={styles.appContainer}>
+            <View style={styles.inputContainer}>
+                <TextInput
+                    style={styles.textInput}
+                    placeholder='Your course goal!'
+                    onChangeText={goalInputHandler} // onChangeText is not
+                    // executing goalInputHandler function! (no ()) just points
+                    // to it so that it can be executed when text changes
+                />
+                <Button title='Add goal' onPress={addGoalHandler}/>
+            </View>
+            <View style={styles.goalsContainer}>
+                <FlatList data={courseGoals} renderItem={itemData => {
+                    itemData.index
+                    return (
+                        <View style={styles.goalItem}>
+                            <Text style={styles.goalText}>{itemData.item}</Text>
+                        </View>
+                    );
+                }}
+                          alwaysBounceVertical={false}
+                />
+            </View>
         </View>
-        <View style={styles.goalsContainer}>
-
-        <FlatList alwaysBounceVertical={false} >
-            {/*<Text>List of goals ... </Text>*/}
-            {courseGoals.map((goal) => (
-                <View key={goal} style={styles.goalItem}>
-                    <Text style={styles.goalText}>{goal}</Text>
-                </View>
-            ))}
-        </FlatList>
-        </View>
-    </View>
-  );
+    );
 }
 
 const styles = StyleSheet.create({
-  appContainer: {
-      flex: 1, // flex: 1 makes app container should take all the space on
-      // screen
-      paddingTop: 50,
-      paddingHorizontal: 16,
-  },
-  inputContainer: {
-      flex: 1,
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      marginBottom: 24,
-      borderBottomWidth: 1,
-      borderBottomColor: '#ccc',
-  },
-  textInput: {
-      borderWidth: 1,
-      borderColor: '#ccc',
-      width: '70%',
-      marginRight: 8,
-      padding: 8
-  },
+    appContainer: {
+        flex: 1, // flex: 1 makes app container should take all the space on
+        // screen
+        paddingTop: 50,
+        paddingHorizontal: 16,
+    },
+    inputContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 24,
+        borderBottomWidth: 1,
+        borderBottomColor: '#ccc',
+    },
+    textInput: {
+        borderWidth: 1,
+        borderColor: '#ccc',
+        width: '70%',
+        marginRight: 8,
+        padding: 8
+    },
     goalsContainer: {
-      flex: 5,
+        flex: 5,
     },
     goalItem: {
         margin: 8,
@@ -94,7 +103,6 @@ const styles = StyleSheet.create({
         color: 'white'
     }
 });
-
 
 
 // reactnative.dev/docs/components-and-apis   view text button image Textinput
