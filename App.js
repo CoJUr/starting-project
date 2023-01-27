@@ -29,7 +29,7 @@ export default function App() {
 
         setCourseGoals(currentGoals => [
             ...currentGoals,
-            {text: enteredGoalText, key: Math.random().toString()}
+            {text: enteredGoalText, id: Math.random().toString()}
         ]);
         //react auto-provides the value for currentGoals param upon call.
         // best practice way to update state that depends on previous state
@@ -51,15 +51,18 @@ export default function App() {
                 <Button title='Add goal' onPress={addGoalHandler}/>
             </View>
             <View style={styles.goalsContainer}>
-                <FlatList data={courseGoals} renderItem={itemData => {
-                    itemData.index
-                    return (
-                        <View style={styles.goalItem}>
-                            <Text style={styles.goalText}>{itemData.item.text}</Text>
-                        </View>
-                    );
-                }}
+                <FlatList data={courseGoals}
+                          renderItem={itemData => {
+                            return (
+                              <View style={styles.goalItem}>
+                                <Text style={styles.goalText}>{itemData.item.text}</Text>
+                              </View>
+                            );
+                          }}
                           alwaysBounceVertical={false}
+                          keyExtractor={(item, index) => {
+                              return item.id;
+                          }}
                 />
             </View>
         </View>
