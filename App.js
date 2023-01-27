@@ -29,7 +29,7 @@ export default function App() {
 
         setCourseGoals(currentGoals => [
             ...currentGoals,
-            enteredGoalText
+            {text: enteredGoalText, key: Math.random().toString()
         ]);
         //react auto-provides the value for currentGoals param upon call.
         // best practice way to update state that depends on previous state
