@@ -29,7 +29,7 @@ export default function App() {
 
         setCourseGoals(currentGoals => [
             ...currentGoals,
-            {text: enteredGoalText, key: Math.random().toString()
+            {text: enteredGoalText, key: Math.random().toString()}
         ]);
         //react auto-provides the value for currentGoals param upon call.
         // best practice way to update state that depends on previous state
@@ -55,7 +55,7 @@ export default function App() {
                     itemData.index
                     return (
                         <View style={styles.goalItem}>
-                            <Text style={styles.goalText}>{itemData.item}</Text>
+                            <Text style={styles.goalText}>{itemData.item.text}</Text>
                         </View>
                     );
                 }}
